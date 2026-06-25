@@ -1,0 +1,57 @@
+{
+	"name": "@maxal_studio/kratosjs-plugin-2fa",
+	"version": "1.0.0",
+	"description": "Two-factor authentication (Google Authenticator / TOTP) for KratosJs panels",
+	"main": "./dist/server/index.js",
+	"types": "./dist/server/index.d.ts",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"types": "./dist/server/index.d.ts",
+			"default": "./dist/server/index.js"
+		},
+		"./client": {
+			"types": "./dist/client/index.d.ts",
+			"default": "./dist/client/index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "npm run clean && tsc -p tsconfig.server.json && tsc -p tsconfig.client.json",
+		"clean": "rm -rf dist",
+		"test": "vitest run"
+	},
+	"keywords": [
+		"kratosjs",
+		"kratosjs-plugin",
+		"2fa",
+		"totp",
+		"authentication"
+	],
+	"author": "MaxAl",
+	"license": "ISC",
+	"dependencies": {
+		"otplib": "^12.0.1",
+		"qrcode": "^1.5.4"
+	},
+	"peerDependencies": {
+		"@maxal_studio/kratosjs": "^1.0.0",
+		"@maxal_studio/kratosjs-react": "^1.0.0",
+		"@mikro-orm/core": "^7.0.0",
+		"@mikro-orm/migrations": "^7.0.0",
+		"react": "^19.0.0"
+	},
+	"peerDependenciesMeta": {
+		"@mikro-orm/migrations": {
+			"optional": true
+		}
+	},
+	"devDependencies": {
+		"@types/qrcode": "^1.5.5",
+		"@types/react": "^19.2.5",
+		"typescript": "^5.9.3"
+	}
+}
