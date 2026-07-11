@@ -1,6 +1,6 @@
 {
   "name": "@maxal_studio/kratosjs-plugin-2fa",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Two-factor authentication (Google Authenticator / TOTP) for KratosJs panels",
   "main": "./dist/server/index.js",
   "types": "./dist/server/index.d.ts",
@@ -38,8 +38,8 @@
     "qrcode": "^1.5.4"
   },
   "peerDependencies": {
-    "@maxal_studio/kratosjs": "^1.0.0",
-    "@maxal_studio/kratosjs-react": "^1.0.0",
+    "@maxal_studio/kratosjs": "^2.0.0",
+    "@maxal_studio/kratosjs-react": "^2.0.0",
     "@mikro-orm/migrations": "^7.1.5",
     "@mikro-orm/core": "^7.0.0",
     "react": "^19.0.0"
