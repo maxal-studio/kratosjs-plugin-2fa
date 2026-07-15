@@ -1,6 +1,6 @@
 {
   "name": "@maxal_studio/kratosjs-plugin-2fa",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Two-factor authentication (Google Authenticator / TOTP) for KratosJs panels",
   "main": "./dist/server/index.js",
   "types": "./dist/server/index.d.ts",
@@ -19,10 +19,14 @@
   "files": [
     "dist"
   ],
+  "kratosjs": {
+    "client": "@maxal_studio/kratosjs-plugin-2fa/client"
+  },
   "scripts": {
     "build": "npm run clean && tsc -p tsconfig.server.json && tsc -p tsconfig.client.json",
     "clean": "rm -rf dist",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "kratosjs",
@@ -38,10 +42,10 @@
     "qrcode": "^1.5.4"
   },
   "peerDependencies": {
-    "@maxal_studio/kratosjs": "^2.0.0",
-    "@maxal_studio/kratosjs-react": "^2.0.0",
-    "@mikro-orm/migrations": "^7.1.5",
+    "@maxal_studio/kratosjs": "^3.0.0",
+    "@maxal_studio/kratosjs-react": "^3.0.0",
     "@mikro-orm/core": "^7.0.0",
+    "@mikro-orm/migrations": "^7.1.5",
     "react": "^19.0.0"
   },
   "peerDependenciesMeta": {
@@ -53,7 +57,8 @@
     "@mikro-orm/migrations": "^7.1.5",
     "@types/qrcode": "^1.5.5",
     "@types/react": "^19.2.5",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.10"
   },
   "repository": {
     "type": "git",

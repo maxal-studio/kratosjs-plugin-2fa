@@ -5,6 +5,7 @@ import {
   AuthHookContext,
   KratosRequest,
   KratosReply,
+  adminRoute,
   t,
 } from "@maxal_studio/kratosjs";
 import en from "./lang/en";
@@ -94,19 +95,21 @@ export class TwoFactorPlugin extends Plugin {
     panel.registerCustomBlock("two-factor-setup");
     panel.registerPage(TwoFactorPage);
 
-    // Enrollment routes. `panel.registerRoute` already applies the request-scoped ORM
-    // context AND the auth middleware, so these run only for an authenticated user
-    // (available on `req.authUser`).
-    panel.registerRoute("get", "/auth/2fa/status", (req, res) =>
+    // Enrollment routes. `adminRoute` prepends the panel's base path and applies the
+    // request-scoped ORM context AND the auth middleware, so these run only for an
+    // authenticated user (available on `req.authUser`). It is required: without it
+    // `route()` registers a bare, public, top-level path — these endpoints must never
+    // be reachable unauthenticated.
+    panel.route("get", "/auth/2fa/status", adminRoute(panel), (req, res) =>
       this.handleStatus(req, res),
     );
-    panel.registerRoute("post", "/auth/2fa/setup", (req, res) =>
+    panel.route("post", "/auth/2fa/setup", adminRoute(panel), (req, res) =>
       this.handleSetup(req, res),
     );
-    panel.registerRoute("post", "/auth/2fa/enable", (req, res) =>
+    panel.route("post", "/auth/2fa/enable", adminRoute(panel), (req, res) =>
       this.handleEnable(req, res),
     );
-    panel.registerRoute("post", "/auth/2fa/disable", (req, res) =>
+    panel.route("post", "/auth/2fa/disable", adminRoute(panel), (req, res) =>
       this.handleDisable(req, res),
     );
   }

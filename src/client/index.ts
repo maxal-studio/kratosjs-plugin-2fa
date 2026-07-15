@@ -1,4 +1,4 @@
-import { definePluginClient } from '@maxal_studio/kratosjs-react';
+import { definePluginClient } from '@maxal_studio/kratosjs-react/plugin';
 import { TwoFactorChallenge } from './TwoFactorChallenge';
 import TwoFactorSetupBlock from './TwoFactorSetupBlock';
 
